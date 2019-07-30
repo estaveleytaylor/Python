@@ -15,27 +15,27 @@ from statsmodels.tsa.stattools import adfuller
 file_name = '/Users/bootcamp/Documents/Countries_And_Codes.xlsx'
 Countries_And_Codes = pd.read_excel(io=file_name)
 
-code = None
+# code = None
 
-def set_location_code(country_input):
+def get_location_code(country_input):
     # global country_input
-    global code
+    # global code
+    code = ''
     # country_input = input('Enter a Country ')
     for i in range(len(Countries_And_Codes)):
         if str(country_input) == (Countries_And_Codes['Location'][i]):
             code = (Countries_And_Codes['Code'][i])
-            print('Weather Station code = ' + code)
+            # print('Weather Station code = ' + code)
             # plot()
-    if code is None:
-        print('Invalid Country Name!')
-        set_location_code()
-
-
-set_location_code()
+    print(code)
+    return code
+    # if code is None:
+    #     print('Invalid Country Name!')
+    #     set_location_code(country_input)
 
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-def data_request():
+def data_request(code):
     global average_of_monthly_averages
     data = []
     month = []
@@ -63,7 +63,7 @@ def data_request():
     hottest_month_index = average_of_monthly_averages.index(max(average_of_monthly_averages))
     hottest_month_temperature = np.max(average_of_monthly_averages)
     hottest_month = months[hottest_month_index]
-    print('The hottest month in: ' + country_input + ' is ' + hottest_month + ' where the average temperature is: ' + str(round(hottest_month_temperature, 1)) + '°C' + '!')
+    # print('The hottest month in: ' + country_input + ' is ' + hottest_month + ' where the average temperature is: ' + str(round(hottest_month_temperature, 1)) + '°C' + '!')
 
     global errors
     errors = []
@@ -75,7 +75,7 @@ def data_request():
     result_dict['Monthly Temperature'] = average_of_monthly_averages
     return result_dict
 
-def data_request_rain():
+def data_request_rain(code):
     global average_of_monthly_averages_rain
     data_rain = []
     month_rain = []
@@ -113,8 +113,3 @@ def data_request_rain():
     result_dict = {}
     result_dict['Monthly Precipitation'] = average_of_monthly_averages
     return result_dict
-
-data_request()
-data_request_rain()
-
-
