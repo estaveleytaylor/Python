@@ -11,9 +11,9 @@ class App extends React.Component {
     return (
       <div class = "form">
         <h1>Enter a Destination</h1>
-          <form action="http://localhost:5000/monthlytemperature/Albania" method="get">
-          Destination: <input type="text"/>
-          <input type="submit" value="Submit"
+          <form action="http://localhost:5000/monthlytemperature/variable" method="get">
+          Destination: <input type="text" name="variable" />
+          Get average temperature for each month<input type="submit" value="Submit"
         />
       </form>
       </div>
