@@ -7,7 +7,7 @@ export default class Form extends React.Component {
       <div class = "form">
         <h1>Enter a Destination</h1>
         {/* action="http://localhost:5000/result" method="get */}
-          <form onSubmit ={this.props.gettemperaturedata}> 
+          <form onSubmit ={this.props.getmonthlydata}> 
           Destination: <input type="text" name="place" />
           <button> Get Temperature </button>
           </form>

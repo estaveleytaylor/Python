@@ -14,22 +14,21 @@ class App extends React.Component {
     temperatureData: []
   }
 
-  gettemperaturedata = async (e) => {
+  getmonthlydata = async (e) => {
     e.preventDefault();
     const place = e.target.elements.place.value;
 
-    const api_call = await fetch(`http://localhost:5000/monthlytemperature/${place}`);
+    const api_call = await fetch(`http://localhost:5000/monthlysummary/${place}`);
     const data = await api_call.json();
     //  .then(results => {
     //     return results.json();
     //   })
     //   .then(data => {
         this.setState({
-          temperatureData: data.Monthly.MonthlyTemperature
+          temperatureData: data.MonthlyTemperature
         })
       
   }
-
 
   render() {
     console.log(this.state.temperatureData)
@@ -63,7 +62,7 @@ class App extends React.Component {
      
       <div>
         <div>
-          <Form gettemperaturedata={this.gettemperaturedata} />
+          <Form getmonthlydata={this.getmonthlydata} />
           {/* <Form getprecipdata={this.getprecipdata} /> */}
         </div>
         <h2>Monthly Average Temperature</h2>
